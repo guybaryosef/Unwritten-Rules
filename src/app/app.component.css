@@ -1,0 +1,15 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+.toolbar-title {
+  font-size: 25px;
+}
+
+.toolbar-button {
+  display:inline-flex;
+  height: 100%;
+  align-items: center;
+}

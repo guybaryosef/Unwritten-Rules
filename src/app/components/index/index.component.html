@@ -1,0 +1,19 @@
+<!-- The index component -->
+<table class="table">
+  <thead>
+  <tr>
+      <td>Rule Title</td>
+      <td>Rule Description</td>
+      <td colspan="2">Actions</td>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let rule of rules">
+          <td>{{ rule.category }}</td>
+          <td>{{ rule.description }}</td>
+          <td><a [routerLink]="['/edit', rule._id]" class="button">Edit</a></td>
+          <td><a [routerLink]="" class="button">Delete</a></td>
+      </tr>
+  </tbody>
+</table>

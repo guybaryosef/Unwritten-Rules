@@ -1,0 +1,11 @@
+<div >
+  <mat-form-field>
+    <input matInput placeholder="Input" #category>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea" #description></textarea>
+  </mat-form-field>
+
+  <button (click)="addRule(category.value, description.value)" >Submit</button>
+</div>

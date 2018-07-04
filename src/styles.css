@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* required to upload a theme for angular material */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Angular routing progress indicator */
+@import "../node_modules/ng2-slim-loading-bar/style.css";
+
+/* Bootstrap V */
+@import "~bootstrap/dist/css/bootstrap.css";

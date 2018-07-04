@@ -1,0 +1,26 @@
+
+<!-- The routing progress indicator -->
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
+
+
+<!-- The navigation bar at the top of all the pages -->
+<mat-toolbar md-tall color="primary" roll="toolbar">
+  <a mat-button routerLink="index" routerLinkActive="active" class="toolbar-button toolbar-title">{{ title }}</a>
+
+  <!-- search bar -->
+  <button type="button" class="btn btn-primary"> bootstrap button</button>
+  <!-- This fills the remaining space in the middle -->
+  <span class="fill-remaining-space"></span>
+
+  <a mat-button routerLink="add" routerLinkActive="active" class="toolbar-button">Add a Rule</a>
+
+  <a mat-button routerLink="index" routerLinkActive="active" class="toolbar-button">Home</a>
+
+</mat-toolbar>
+
+
+<!-- The angular side routing -->
+<div>
+  <router-outlet></router-outlet>
+</div>
+
