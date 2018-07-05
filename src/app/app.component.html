@@ -2,22 +2,28 @@
 <!-- The routing progress indicator -->
 <ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 
-
 <!-- The navigation bar at the top of all the pages -->
-<mat-toolbar md-tall color="primary" roll="toolbar">
-  <a mat-button routerLink="index" routerLinkActive="active" class="toolbar-button toolbar-title">{{ title }}</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="index" routerLinkActive="active">{{ title }}</a>
 
-  <!-- search bar -->
-  <button type="button" class="btn btn-primary"> bootstrap button</button>
-  <!-- This fills the remaining space in the middle -->
-  <span class="fill-remaining-space"></span>
+  <!-- search form-->
+  <form class="form-inline my-2 my-lg-0 justify-content-start">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <a mat-button routerLink="add" routerLinkActive="active" class="toolbar-button">Add a Rule</a>
-
-  <a mat-button routerLink="index" routerLinkActive="active" class="toolbar-button">Home</a>
-
-</mat-toolbar>
-
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav ">
+      <a class="nav-item nav-link" routerLink="add" routerLinkActive="active">Add a Rule</a>
+      <a class="nav-item nav-link" >Log In</a>
+      <a class="nav-item nav-link" >About</a>
+    </div>
+  </div>
+</nav>
 
 <!-- The angular side routing -->
 <div>
