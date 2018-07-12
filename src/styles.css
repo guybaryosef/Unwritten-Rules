@@ -6,5 +6,5 @@
 /* Angular routing progress indicator */
 @import "../node_modules/ng2-slim-loading-bar/style.css";
 
-/* Bootstrap V */
-@import "~bootstrap/dist/css/bootstrap.css";
+/* Bootstrap IV */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css"

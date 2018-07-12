@@ -10,6 +10,7 @@ import { IndexComponent } from './components/index/index.component';
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatInputModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule }  from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // angular progress bar indicator
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 // angular routing
 import {RouterModule, Routes} from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
 const routes: Routes = [
   {
     path: 'index',
@@ -29,6 +31,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: 'search/:id',
@@ -42,22 +48,23 @@ const routes: Routes = [
     AppComponent,
     AddComponent,
     SearchComponent,
-    IndexComponent
+    IndexComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    SlimLoadingBarModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
-    SlimLoadingBarModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule, 
-    ReactiveFormsModule,
-    BrowserAnimationsModule
-    
+    MatAutocompleteModule
   ],
   providers: [
     AddRuleService   // for the http requests to connect to mongodb (mlab)
