@@ -3,7 +3,7 @@ import {FormControl, Validators, FormGroup} from '@angular/forms';
 import { AddRuleService } from '../../addRule.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {customTagValidator} from './validators/tag-validator.directive';
+import {repeatingValidator, tooManyValidator} from './validators/tag-validator.directive';
 
 
 @Component({
@@ -20,8 +20,8 @@ export class AddComponent implements OnInit {
       Validators.required
     ]),
     tag : new FormControl('', [
-      Validators.required,
-      customTagValidator
+      repeatingValidator(this.tags),
+      tooManyValidator(this.tags)
     ])
   });
   
@@ -34,33 +34,26 @@ export class AddComponent implements OnInit {
 
   // Add a tag to the list of tags
   addTag(newTag: string) {
-    if (this.tags.indexOf(newTag) < 0) { //validates that the tag doesn't already exsist.
-      if (this.tags.length >= 3) {
-        //error msg about too many tags
-      }
-      else
+    if (!this.ruleForm.get('tag').invalid) {
         this.tags.push(newTag);
+        this.ruleForm.get('tag').setValue('');
     }
-    //else
-      //error msg about lready being added
   }
 
-  // error message function for tags
+  // The error message for the tag input
   tagErrorMsg() {
-    return this.ruleForm.get('tag').hasError('required') ? 'You must enter a tag' :
-           this.ruleForm.get('tag').hasError('customTagValidator') ? 'Too many tags/already added' :
-           '' ;
+    return this.ruleForm.get('tag').hasError('tooMany') ? 'You have entered the maximum amount of tags!' :
+    this.ruleForm.get('tag').hasError('repeating') ? 'You have already added this tag!' :
+            '';
   }
 
   // Removes a tag from the list of tags
   removeTag(tag) {
     this.tags.splice(tag,1);
+    this.ruleForm.get('tag').setValue('');
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.tagOptions.filter(option => option.toLowerCase().includes(filterValue));
-  }
+
 
 
   // Add the rule and its associated tags to the database
@@ -70,12 +63,16 @@ export class AddComponent implements OnInit {
 
 
   ngOnInit() : void {
-    //initializes the tag's form control
+
+    //initializes the tag's autocomplete funcitonality
     this.filteredOptions = this.ruleForm.get('tag').valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
   }
 
-
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.tagOptions.filter(option => option.toLowerCase().includes(filterValue));
+  }
 }

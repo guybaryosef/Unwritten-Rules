@@ -12,6 +12,9 @@
       <mat-form-field class="form-group" hintLabel="Max 100 characters">
         <textarea matInput class="form-control" formControlName="rule" maxlength="100" placeholder="Rule" cols="20" rows="5"></textarea>
         <mat-hint align="end">{{ruleForm.get('rule').value?.length || 0}}/100</mat-hint>  
+        <mat-error *ngIf="ruleForm.get('rule').hasError('required') && (ruleForm.get('rule').dirty || ruleForm.get('rule').touched)">
+          You must enter the description of the rule
+        </mat-error>
       </mat-form-field>
       
       <!-- Tag input area -->
@@ -23,7 +26,7 @@
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> {{ option }} </mat-option>
         </mat-autocomplete>
         
-        <mat-error *ngIf="ruleForm.get('tag').invalid"> error message here! </mat-error>
+        <mat-error *ngIf="ruleForm.get('tag').invalid"> {{ tagErrorMsg() }} </mat-error>
       </mat-form-field>
 
       <ul class="list-group">
