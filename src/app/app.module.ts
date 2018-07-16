@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AddComponent } from './components/add/add.component';
 import { SearchComponent } from './components/search/search.component';
 import { IndexComponent } from './components/index/index.component';
+import { AboutComponent } from './components/about/about.component';
 
 //UI with angular material
 import {MatButtonModule, MatCheckboxModule, MatToolbarModule, MatInputModule} from '@angular/material';
@@ -17,12 +18,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 // used to send http requests, if we end up needing it...
-import { AddRuleService } from './addRule.service';
+import { RuleService } from './rule.service';
 import { HttpClientModule } from '@angular/common/http';
 
 // angular routing
 import {RouterModule, Routes} from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
+
+
 const routes: Routes = [
   {
     path: 'index',
@@ -67,7 +69,7 @@ const routes: Routes = [
     MatAutocompleteModule
   ],
   providers: [
-    AddRuleService   // for the http requests to connect to mongodb (mlab)
+    RuleService   // for the http requests to connect to mongodb (mlab)
   ],
   bootstrap: [
     AppComponent

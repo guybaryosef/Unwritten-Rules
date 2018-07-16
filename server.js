@@ -16,14 +16,14 @@ mongoose.connect(config.DB).then(
 );
 
 // load in the express routing for the database
-const addRuleRouter = require('./routes/addRule.route');
+const RuleRouter = require('./routes/Rule.route');
 
 app.use(bodyParser.json());
 app.use(cors());
 const port = process.env.PORT || 4000;
 
 //this needs to come after the cors and port listening...
-app.use('/addRule', addRuleRouter);
+app.use('/db', RuleRouter);
 
 const server = app.listen(port, function(){
     console.log('Listening on port ' + port);

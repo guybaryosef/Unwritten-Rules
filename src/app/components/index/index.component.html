@@ -1,4 +1,21 @@
 <!-- The index component -->
+<div class="flex-column">
+
+    <h1>Welcome to Unwritten Rules!</h1>
+    
+    <div class="random">
+        <h5>{{randRule?.description}}</h5>
+        <hr>
+        <h6>Tags: </h6>
+        <h6 *ngFor="let tag of randRule?.tags">{{tag}}</h6>
+
+    </div>
+    
+
+</div>
+
+
+<!--
 <table class="table">
   <thead>
   <tr>
@@ -17,3 +34,4 @@
       </tr>
   </tbody>
 </table>
+-->

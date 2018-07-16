@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Rule} from './rule';
-import { AddRuleService } from '../../addRule.service';
+import { RuleService } from '../../rule.service';
 
 @Component({
   selector: 'app-index',
@@ -9,17 +9,16 @@ import { AddRuleService } from '../../addRule.service';
 })
 export class IndexComponent implements OnInit {
 
-  rules: Rule[];
+  randRule: Rule;
 
-  constructor(private addruleserviceVar: AddRuleService) {
-
-  }
+  constructor(private ruleserviceVar: RuleService) {}
 
   ngOnInit() {
-    // load all the rules in the database
-    this.addruleserviceVar.getRule()
-      .subscribe((data: Rule[]) => {
-        this.rules = data;
+
+    // Loads 'random' rule - first one in database
+    this.ruleserviceVar.getRandRule()
+      .subscribe( (data: Rule[]) => {
+        this.randRule = data[0];
       })
   
   }

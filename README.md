@@ -21,3 +21,18 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+
+#### To Do:
+
+\begin{description}
+    \item Finsh working on progress spinner and confirmation of adding a rule in add rule component
+    \item 'Index' front-end with the 'random' rule feature.
+    \item work on the 'random-rule' feature in back-end.
+    \item 'Search' front-end. Should be similar to the index.
+    \item 'Search' back-end.
+    \item Add advertisements to all pages
+    \item Usage analytics
+    \item Fill out 'About' descriptions
+    \item Decide if there is reason for log-in feature...
+\end{description}

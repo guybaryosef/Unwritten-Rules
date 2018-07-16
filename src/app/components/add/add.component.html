@@ -1,41 +1,41 @@
-<div class="d-flex justify-content-center">
-  <div class="flex-column">
-    <div >
-      <h1>Add an Unwritten Rule below!</h1>
-      <p>Do you have a custom, hint, curtosy, or general knowledge that you want to share?</p>
-      <p>Add it below so that society can benefit from it!</p>
-    </div>
 
-
-    <form [formGroup]="ruleForm">
-      <!-- Rule input area -->
-      <mat-form-field class="form-group" hintLabel="Max 100 characters">
-        <textarea matInput class="form-control" formControlName="rule" maxlength="100" placeholder="Rule" cols="20" rows="5"></textarea>
-        <mat-hint align="end">{{ruleForm.get('rule').value?.length || 0}}/100</mat-hint>  
-        <mat-error *ngIf="ruleForm.get('rule').hasError('required') && (ruleForm.get('rule').dirty || ruleForm.get('rule').touched)">
-          You must enter the description of the rule
-        </mat-error>
-      </mat-form-field>
-      
-      <!-- Tag input area -->
-      <mat-form-field class="form-group">
-        <input matInput class="form-control" placeholder="Tag" (keyup.enter)="addTag(ruleForm.get('tag').value)" 
-                  formControlName="tag" [matAutocomplete]="auto" >
-        
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> {{ option }} </mat-option>
-        </mat-autocomplete>
-        
-        <mat-error *ngIf="ruleForm.get('tag').invalid"> {{ tagErrorMsg() }} </mat-error>
-      </mat-form-field>
-
-      <ul class="list-group">
-        <li *ngFor="let tag1 of tags" class="list-group-item"> <span (click)="removeTag($index)">&times; </span> {{tag1}} </li>
-      </ul>
-
-      <!-- Enter form button -->
-      <br>
-      <button class="btn btn-outline-warning" (click)="addRule(ruleForm.get('rule').value, ruleForm.get('tag').value)" >Submit</button>
-    </form>
+<!-- Add Rule component template -->
+<div class="flex-column">
+  <div>
+    <h1>Add an Unwritten Rule below!</h1>
+    <p>Do you have a custom, hint, curtosy, or general knowledge that you want to share?</p>
+    <p>Add it below so that society can benefit from it!</p>
   </div>
+
+  <form [formGroup]="ruleForm">
+    <!-- Rule input area -->
+    <mat-form-field class="form-group" hintLabel="Max 100 characters">
+      <textarea matInput class="form-control" formControlName="rule" maxlength="100" placeholder="Rule" cols="20" rows="5"></textarea>
+      <mat-hint align="end">{{ruleForm.get('rule').value?.length || 0}}/100</mat-hint>  
+      <mat-error *ngIf="ruleForm.get('rule').hasError('required') && (ruleForm.get('rule').dirty || ruleForm.get('rule').touched)">
+        You must enter the description of the rule
+      </mat-error>
+    </mat-form-field>
+    
+    <!-- Tag input area -->
+    <mat-form-field class="form-group">
+      <input matInput class="form-control" placeholder="Tag" (keyup.enter)="addTag(ruleForm.get('tag').value)" 
+                formControlName="tag" [matAutocomplete]="auto" >
+      
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> {{ option }} </mat-option>
+      </mat-autocomplete>
+      
+      <mat-error *ngIf="ruleForm.get('tag').invalid"> {{ tagErrorMsg() }} </mat-error>
+    </mat-form-field>
+
+    <ul class="list-group">
+      <li *ngFor="let tag1 of tags" class="list-group-item"> <span (click)="removeTag($index)">&times; </span> {{tag1}} </li>
+    </ul>
+
+    <!-- Enter form button -->
+    <br>
+    <button class="btn btn-outline-warning" type="button" (click)="addRule(ruleForm.get('rule').value)" >Submit</button>
+  </form>
+  <div *ngIf="errorSub">We are not able to add your rule right now, maybe try again later :(.</div>
 </div>

@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for AdUnits
 let ruleSchema = new Schema({
-category: String,
   description: String,
+  tags: [String]
 });
 
-module.exports = mongoose.model('AddRule', ruleSchema);
+module.exports = mongoose.model('Rule', ruleSchema);
