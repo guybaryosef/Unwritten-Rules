@@ -13,8 +13,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-// angular progress bar indicator
+// angular progress bar indicator when loading new page
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 // used to send http requests, if we end up needing it...
@@ -27,7 +28,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'index',
+    path: '',
     component: IndexComponent
   },
   {
@@ -66,7 +67,8 @@ const routes: Routes = [
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     RuleService   // for the http requests to connect to mongodb (mlab)

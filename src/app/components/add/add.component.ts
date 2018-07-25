@@ -18,6 +18,8 @@ export class AddComponent implements OnInit {
   tagOptions: string[] = ['Tip', 'Etiquette', 'Dresscode', 'Polite', 'Acceptable Behavior'];
   filteredOptions: Observable<string[]>;
   errorSub: boolean;
+  showSpinner: boolean;
+  addedRule: boolean;
 
   ruleForm = new FormGroup({
     rule: new FormControl('', [
@@ -31,12 +33,14 @@ export class AddComponent implements OnInit {
   
   constructor(private ruleserviceVar: RuleService) {   
     this.errorSub = false; 
+    this.showSpinner = false;
+    this.addedRule = false;
   }
 
 
   // Add a tag to the list of tags
-  addTag(newTag: string) {
-    if (!this.ruleForm.get('tag').invalid) {
+  addTag(newTag: string) {      
+    if (!this.ruleForm.get('tag').invalid && newTag != '') {
         this.tags.push(newTag);
         this.ruleForm.get('tag').setValue('');
     }
@@ -45,9 +49,12 @@ export class AddComponent implements OnInit {
 
   // The error message for the tag input
   tagErrorMsg() {
-    return this.ruleForm.get('tag').hasError('tooMany') ? 'You have entered the maximum amount of tags!' :
-    this.ruleForm.get('tag').hasError('repeating') ? 'You have already added this tag!' :
-            '';
+    if ( this.ruleForm.get('tag').hasError('tooMany') )
+      return 'You have entered the maximum amount of tags!';
+    else if ( this.ruleForm.get('tag').hasError('repeating') )
+      return 'You have already added this tag!';
+    else
+      return '';
   }
 
 
@@ -59,16 +66,23 @@ export class AddComponent implements OnInit {
 
 
   // Add the rule and its associated tags to the database
-  addRule(description) {
-    //activate the matspinner dive <mat-spinner></mat-spinner>
-    if (this.ruleserviceVar.addRuleFunc(description, this.tags) ) {
-      this.errorSub = false;
-      //wipe clear the add fields
-      // even better, get rid of fields / thank for submitting a rule
-    }
-    else {
-      this.errorSub = true; // gives error that unable to submit rule to db
-    }
+  addRule(des) {
+    this.errorSub = false;
+    this.showSpinner = true;
+
+    this.ruleserviceVar.addRuleFunc(des, this.tags)
+      .subscribe( 
+        rule =>  {
+          console.log('Succesfully added rule to database. Rule: ' + rule);
+          this.addedRule = true;
+          this.showSpinner = false;
+        },
+        error => {
+          console.error('Observer got an error: ' + error);
+          this.errorSub = true; // gives error that unable to submit rule to db
+          this.showSpinner = false;
+        }
+      );
   }
 
 

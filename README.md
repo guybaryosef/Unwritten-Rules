@@ -25,14 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 #### To Do:
 
-\begin{description}
-    \item Finsh working on progress spinner and confirmation of adding a rule in add rule component
-    \item 'Index' front-end with the 'random' rule feature.
-    \item work on the 'random-rule' feature in back-end.
-    \item 'Search' front-end. Should be similar to the index.
-    \item 'Search' back-end.
-    \item Add advertisements to all pages
-    \item Usage analytics
-    \item Fill out 'About' descriptions
-    \item Decide if there is reason for log-in feature...
-\end{description}
+* 'Index' front-end with the 'random' rule feature.
+* work on the 'random-rule' feature in back-end.
+* 'Search' front-end. Should be similar to the index.
+* 'Search' back-end.
+* Add advertisements to all pages
+* Usage analytics
+* Fill out 'About' descriptions
+* Decide if there is reason for log-in feature...
+* Make compatible with mobile
