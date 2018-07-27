@@ -22,7 +22,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-
+## Deploy project to Github Website
+```
+ng build --prod --base-href https://guybaryosef.github.io/Unwritten-Rules/
+angular-cli-ghpages
+```
+(dont forget to add, commit and push)
 #### To Do:
 
 * 'Index' front-end with the 'random' rule feature.
