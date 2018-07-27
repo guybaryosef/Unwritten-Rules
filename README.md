@@ -38,4 +38,4 @@ angular-cli-ghpages
 * Fill out 'About' descriptions
 * Decide if there is reason for log-in feature...
 * Make compatible with mobile
-* Add built site to github repository
+* Make deployed project connect with database.
