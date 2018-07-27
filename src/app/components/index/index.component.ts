@@ -17,8 +17,8 @@ export class IndexComponent implements OnInit {
 
     // Loads 'random' rule - first one in database
     this.ruleserviceVar.getRandRule()
-      .subscribe( (data: Rule[]) => {
-        this.randRule = data[0];
+      .subscribe( (data: Rule) => {
+        this.randRule = data;
       })
   
   }

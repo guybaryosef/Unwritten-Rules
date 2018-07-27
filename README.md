@@ -26,7 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 #### To Do:
 
 * 'Index' front-end with the 'random' rule feature.
-* work on the 'random-rule' feature in back-end.
 * 'Search' front-end. Should be similar to the index.
 * 'Search' back-end.
 * Add advertisements to all pages
@@ -34,3 +33,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 * Fill out 'About' descriptions
 * Decide if there is reason for log-in feature...
 * Make compatible with mobile
+* Add built site to github repository

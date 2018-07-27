@@ -37,14 +37,17 @@ RuleRouter.route('/search').get(function (req, res) {
 
 // get a random rule from database
 RuleRouter.route('/rand').get(function (req, res) {
-  Rule.find(function (err, details){
-    if(err){
-      console.log(err);
+  Rule.aggregate([{ $sample: {size:1} }]).exec( 
+    function (err, rule) {
+      if (err) {
+        console.error(err); //note that this console is nodemon, not the browser's console
+      }
+      else {
+        console.log("Recieved random rule: " + rule);
+        res.json(rule[0]);
+      }
     }
-    else {
-      res.json(details);
-    }
-  });
+  );  
 });
 
 // Defined edit route
