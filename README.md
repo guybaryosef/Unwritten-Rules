@@ -7,7 +7,6 @@
 * 'Search' back-end.
 * Add some adds to index
 * Usage analytics
-* Fill out 'About' descriptions
 * Make compatible with mobile
 * Make deployed project connect with database.
 
