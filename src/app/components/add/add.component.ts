@@ -4,7 +4,6 @@ import { RuleService } from '../../rule.service';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {repeatingValidator, tooManyValidator} from './validators/tag-validator.directive';
-import { BaseTreeControl } from '@angular/cdk/tree';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { BaseTreeControl } from '@angular/cdk/tree';
 export class AddComponent implements OnInit {
 
   tags: string[] = [];
-  tagOptions: string[] = ['Tip', 'Etiquette', 'Dresscode', 'Polite', 'Acceptable Behavior'];
+  tagOptions: string[] = ['Tip', 'Etiquette', 'Dress-code', 'Polite', 'Acceptable Behavior'];
   filteredOptions: Observable<string[]>;
   errorSub: boolean;
   showSpinner: boolean;
@@ -73,7 +72,7 @@ export class AddComponent implements OnInit {
     this.ruleserviceVar.addRuleFunc(des, this.tags)
       .subscribe( 
         rule =>  {
-          console.log('Succesfully added rule to database. Rule: ' + rule);
+          console.log('Successfully added rule to database. Rule: ' + rule);
           this.addedRule = true;
           this.showSpinner = false;
         },
@@ -88,7 +87,7 @@ export class AddComponent implements OnInit {
 
   ngOnInit() : void {
 
-    //initializes the tag's autocomplete funcitonality
+    //initializes the tag's autocomplete functionality
     this.filteredOptions = this.ruleForm.get('tag').valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))

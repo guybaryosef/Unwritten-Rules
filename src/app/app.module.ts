@@ -14,6 +14,8 @@ import {FormsModule, ReactiveFormsModule }  from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
 
 // angular progress bar indicator when loading new page
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
@@ -68,7 +70,9 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [
     RuleService   // for the http requests to connect to mongodb (mlab)

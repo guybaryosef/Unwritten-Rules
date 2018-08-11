@@ -1,37 +1,27 @@
 <!-- The index component -->
-<div class="flex-column">
+<div class="d-flex justify-content-center">
+    <div class="flex-column w-75">
 
-    <h1>Welcome to Unwritten Rules!</h1>
+        <div class="welcome pt-5 pb-5 ">
+            <h1>Welcome to Unwritten Rules!</h1>
+            <h3>The place where social behavior is stated and explained, to make the world a nicer place :)</h3>
+        </div>
+        
+
+        <div class="randomRule jumbotron pt-5">
+            <h4>Unwritten Rule of the Day!</h4>
+            
+            <div class="led pt-5">{{randRule?.description}}</div>
+            <hr width="20%" align="LEFT">
+            <span class="text-success">
+                    <mat-icon svgIcon="thumbs-up" (click)="updateRule('up')"></mat-icon>
+                {{randRule?.thumbsUp}}
+            </span>
+            <span class="text-danger">
+                <mat-icon svgIcon="thumbs-down" (click)="updateRule('down')"></mat-icon>
+                {{randRule?.thumbsDown}}
+            </span>
+        </div>
     
-    <div class="random">
-        <h5>{{randRule?.description}}</h5>
-        <hr>
-        <h6>Tags: </h6>
-        <h6 *ngFor="let tag of randRule?.tags">{{tag}}</h6>
-
     </div>
-    
-
 </div>
-
-
-<!--
-<table class="table">
-  <thead>
-  <tr>
-      <td>Rule Title</td>
-      <td>Rule Description</td>
-      <td colspan="2">Actions</td>
-  </tr>
-  </thead>
-
-  <tbody>
-      <tr *ngFor="let rule of rules">
-          <td>{{ rule.category }}</td>
-          <td>{{ rule.description }}</td>
-          <td><a [routerLink]="['/edit', rule._id]" class="button">Edit</a></td>
-          <td><a [routerLink]="" class="button">Delete</a></td>
-      </tr>
-  </tbody>
-</table>
--->

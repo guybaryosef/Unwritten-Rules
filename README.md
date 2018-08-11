@@ -1,5 +1,16 @@
 # Unwritten Rules
 
+#### To Do:
+
+* 'Index' allow editing of amount of thumbs up & down.
+* 'Search' front-end. Should be similar to the index.
+* 'Search' back-end.
+* Add some adds to index
+* Usage analytics
+* Fill out 'About' descriptions
+* Make compatible with mobile
+* Make deployed project connect with database.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 This personal project is a web application.
 ## Development server
@@ -28,14 +39,3 @@ ng build --prod --base-href https://guybaryosef.github.io/Unwritten-Rules/
 angular-cli-ghpages
 ```
 (dont forget to add, commit and push)
-#### To Do:
-
-* 'Index' front-end with the 'random' rule feature.
-* 'Search' front-end. Should be similar to the index.
-* 'Search' back-end.
-* Add advertisements to all pages
-* Usage analytics
-* Fill out 'About' descriptions
-* Decide if there is reason for log-in feature...
-* Make compatible with mobile
-* Make deployed project connect with database.

@@ -8,10 +8,13 @@ const express = require('express');
 const app = express();
 const RuleRouter = express.Router();
 
-// we need the 'addRule' model for our database
+// we need the Rule model for our database
 let Rule = require('../models/Rule');
 
-// Defined store route
+
+/*
+ * Adding a rule to the database
+ */
 RuleRouter.route('/add').post(function (req, res) {
   let rule = new Rule(req.body);
   rule.save()
@@ -23,7 +26,10 @@ RuleRouter.route('/add').post(function (req, res) {
     });
 });
 
-// search for a rule in databse
+
+/*
+ * Searching for a rule in database
+ */
 RuleRouter.route('/search').get(function (req, res) {
   Rule.find(function (err, details){
     if(err){
@@ -35,7 +41,10 @@ RuleRouter.route('/search').get(function (req, res) {
   });
 });
 
-// get a random rule from database
+
+/*
+ * Getting a random rule from database
+ */
 RuleRouter.route('/rand').get(function (req, res) {
   Rule.aggregate([{ $sample: {size:1} }]).exec( 
     function (err, rule) {
@@ -43,29 +52,37 @@ RuleRouter.route('/rand').get(function (req, res) {
         console.error(err); //note that this console is nodemon, not the browser's console
       }
       else {
-        console.log("Recieved random rule: " + rule);
+        console.log("Received random rule: " + rule);
         res.json(rule[0]);
       }
     }
   );  
 });
 
-// Defined edit route
+
+/*
+ *  Editing a rule in the db (only for increasing thumbs up & down)
+ */
 RuleRouter.route('/edit/:id').get(function (req, res) {
-  let id = req.params.id;
-  Rule.findById(id, function (err, rule){
+  let updatedRule = new Rule(req.body)
+  // by making the route end with :id, req.params.id will be the __ in /edit/__
+  Rule.findByIdAndUpdate(req.params.id, updatedRule, function (err, rule){
       res.json(rule);
   });
 });
 
 
-// Defined delete | remove | destroy route
+/*
+ * Currently here to delete rule from db.
+ * I do not think this will be a functionality.
+ */
 RuleRouter.route('/delete/:id').get(function (req, res) {
   Rule.findByIdAndRemove({_id: req.params.id}, function(err, details){
         if(err) res.json(err);
         else res.json('Successfully removed');
     });
 });
+
 
 // export these routings into the server.js file
 module.exports = RuleRouter;

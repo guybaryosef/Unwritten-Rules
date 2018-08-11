@@ -21,11 +21,15 @@ export class RuleService {
 
 
 
-  //function to add a rule to the database
+  /*
+   *function to add a rule to the database
+   */
   addRuleFunc(descrip, ta) : Observable<Rule> {
     const obj = {
       description: descrip,
-      tags: ta
+      tags: ta,
+      thumbsUp: 0,
+      thumbsDown: 0
     };
     return this.http.post<Rule>(`${this.uri}/add`, obj)
       .pipe(
@@ -39,10 +43,24 @@ export class RuleService {
     return this.http.get(`${this.uri}/`) // the final "/addRule" is still unclear
   }
 
-  // Function to get a random rule from the database
+  /*
+   * Function to get a random rule from the database
+   */
   getRandRule() {
     return this.http.get(`${this.uri}/rand`)
   }
+
+  /*
+   * Function to update a rule in the database
+   */
+  updateRule(Rule) {
+    return this.http.get(`${this.uri}/edit/${Rule.id}`, Rule)
+  }
+
+
+
+
+
 
   // error handles for adding a rule to the db
   private handleError(error: HttpErrorResponse) {
@@ -50,10 +68,10 @@ export class RuleService {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
+      // The back-end returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` +
+        `Back-end returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message

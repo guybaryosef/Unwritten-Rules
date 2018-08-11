@@ -1,4 +1,11 @@
 .carousel {
-    height: 500px;
-    background-color: gray;
+    height: 40em;
+    background-color: rgb(161, 161, 161);
+}
+
+.carousel-item {
+    min-height: 1rem;
+    margin: auto;
+    max-width: 70%;
+    
 }
