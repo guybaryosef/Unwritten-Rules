@@ -1,3 +1,23 @@
-<p>
-  search works!
-</p>
+
+<div class="d-flex justify-content-center">
+  <div class="flex-column w-75">
+    <h2>Search query: {{search}}</h2>
+    <div class="randomRule jumbotron pt-5" *ngFor="let rule of rules">
+      
+      <div class="led pt-5">{{rule.description}}</div>
+      <hr width="20%" align="LEFT">
+      <ul>
+        <li *ngFor="let tag of rule.tag">{{ tag }} </li>
+      </ul>
+      <span class="text-success">
+              <mat-icon svgIcon="thumbs-up" (click)="updateRule('up')"></mat-icon>
+          {{rule.thumbsUp}}
+      </span>
+      <span class="text-danger">
+          <mat-icon svgIcon="thumbs-down" (click)="updateRule('down')"></mat-icon>
+          {{rule.thumbsDown}}
+      </span>
+    </div>
+
+  </div>
+</div>

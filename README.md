@@ -2,10 +2,9 @@
 
 #### To Do:
 
-* 'Index' allow editing of amount of thumbs up & down.
 * 'Search' front-end. Should be similar to the index.
 * 'Search' back-end.
-* Add some adds to index
+* Add some advertisements to index & search components
 * Usage analytics
 * Make compatible with mobile
 * Make deployed project connect with database.

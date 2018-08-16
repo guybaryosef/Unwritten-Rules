@@ -42,7 +42,7 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'search/:id',
+    path: 'search',
     component: SearchComponent
   }
 ];

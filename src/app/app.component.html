@@ -7,9 +7,9 @@
   <a class="navbar-brand text-white" routerLink="" routerLinkActive="active">{{ title }}</a>
 
   <!-- search form-->
-  <form class="form-inline my-2 my-lg-0 justify-content-start">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  <form class="form-inline my-2 my-lg-0 justify-content-start" (ngSubmit)="newMessage(searchForm)" #searchForm="ngForm">
+    <input class="form-control mr-sm-2" type="search" [placeholder]="search" aria-label="Search" name="searchQ" ngModel>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLinkActive="active" routerLink="search">Search</button>
   </form>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

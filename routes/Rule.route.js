@@ -19,10 +19,10 @@ RuleRouter.route('/add').post(function (req, res) {
   let rule = new Rule(req.body);
   rule.save()
     .then(game => {
-    res.status(200).json({'addRule': 'rule added successfully'});
+      res.status(200).json({'addRule': 'rule added successfully'});
     })
     .catch(err => {
-    res.status(400).send("unable to save rule to database");
+      res.status(400).send("unable to save rule to database");
     });
 });
 
@@ -63,12 +63,32 @@ RuleRouter.route('/rand').get(function (req, res) {
 /*
  *  Editing a rule in the db (only for increasing thumbs up & down)
  */
-RuleRouter.route('/edit/:id').get(function (req, res) {
+RuleRouter.route('/edit/:id').post(function (req, res) {
+  Rule.findById(req.params.id, function(err, curRule) {
+    if (!curRule)
+      res.json('could not load the rule :(');
+    else {
+      curRule.thumbsUp = req.body.thumbsUp;
+      curRule.thumbsDown = req.body.thumbsDown;
+
+      curRule.save()
+        .then(curRule => {
+          res.json('Edit complete');
+        })
+        .catch(err => {
+          res.status(400).send("unable to update the database");
+        });
+    }
+  });
+  
+  /* 
+  ////////////////////////////////////////////////
   let updatedRule = new Rule(req.body)
-  // by making the route end with :id, req.params.id will be the __ in /edit/__
+  // by making  the route end with :id, req.params.id will be the __ in /edit/__
   Rule.findByIdAndUpdate(req.params.id, updatedRule, function (err, rule){
       res.json(rule);
   });
+  */
 });
 
 

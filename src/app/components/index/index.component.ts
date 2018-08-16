@@ -16,8 +16,8 @@ export class IndexComponent implements OnInit {
   randRule: Rule;
 
   constructor( private ruleserviceVar: RuleService, 
-               iconRegistry: MatIconRegistry, 
-               sanitizer: DomSanitizer ) {
+      iconRegistry: MatIconRegistry, 
+      sanitizer: DomSanitizer ) {
     iconRegistry.addSvgIcon(
       'thumbs-up',
       sanitizer.bypassSecurityTrustResourceUrl('assets/thumbs-up.svg')
@@ -34,16 +34,7 @@ export class IndexComponent implements OnInit {
       this.randRule.thumbsUp += 1;
     else 
       this.randRule.thumbsDown += 1;
-    
     this.ruleserviceVar.updateRule(this.randRule)
-      .subscribe(
-        rule =>  {
-          console.log('Successfully updated the rule in the database.');
-        },
-        error => {
-          console.error('Unable to currently update rule in the database.');
-        }
-      );
   }
 
 
