@@ -2,8 +2,6 @@
 
 #### To Do:
 
-* 'Search' front-end. Should be similar to the index.
-* 'Search' back-end.
 * Add some advertisements to index & search components
 * Usage analytics
 * Make compatible with mobile

@@ -28,17 +28,20 @@ RuleRouter.route('/add').post(function (req, res) {
 
 
 /*
- * Searching for a rule in database
+ * Searching for a rule in database.
+ * req.params is the query words in format String[]
  */
 RuleRouter.route('/search').get(function (req, res) {
-  Rule.find(function (err, details){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.json(details);
-    }
-  });
+  Rule.find({$text: {$search: req.query['key']}}).limit(5).exec(
+    function (err, rules){
+      if(err){
+        console.log(err);
+      }
+      else {
+        console.log('Found search results:', rules[0]);
+        res.json(rules);
+      }
+    });
 });
 
 

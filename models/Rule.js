@@ -8,5 +8,6 @@ let ruleSchema = new Schema({
   thumbsUp: Number,
   thumbsDown: Number
 });
+ruleSchema.index({description: 'text'});
 
 module.exports = mongoose.model('Rule', ruleSchema);

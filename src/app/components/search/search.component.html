@@ -1,7 +1,8 @@
 
 <div class="d-flex justify-content-center">
   <div class="flex-column w-75">
-    <h2>Search query: {{search}}</h2>
+    <h4 class="pt-5 pb-5">Results for: {{search}}</h4>
+
     <div class="randomRule jumbotron pt-5" *ngFor="let rule of rules">
       
       <div class="led pt-5">{{rule.description}}</div>

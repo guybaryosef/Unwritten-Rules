@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
       this.navigationInterceptor(event);
     });
   }
-
   private navigationInterceptor(event: Event): void {
     if (event instanceof NavigationStart) {
       this._loadingBar.start();
