@@ -32,6 +32,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Deploy project to Github Website
 ```
 ng build --prod --base-href https://guybaryosef.github.io/Unwritten-Rules/
-angular-cli-ghpages
+ngh --dir dist/unwritten/
 ```
 (dont forget to add, commit and push)
