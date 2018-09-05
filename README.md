@@ -5,7 +5,7 @@
 * Add some advertisements to index & search components
 * Usage analytics
 * Make compatible with mobile
-* Make deployed project connect with database.
+* Deploy app to a web hosting service, make sure it connects to database.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 This personal project is a web application.
